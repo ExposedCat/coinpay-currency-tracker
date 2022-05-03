@@ -1,8 +1,10 @@
-from aiogram import types
+from aiogram.types import Message
 from aiogram.dispatcher.middlewares import BaseMiddleware
 
 from services.load_json import load_json as _load_json
-from services.get_text_builder import build_get_text_func as _build_get_text_func
+from services.get_text_builder import (
+    build_get_text_func as _build_get_text_func,
+)
 
 
 class I18nMiddleware(BaseMiddleware):
@@ -10,6 +12,6 @@ class I18nMiddleware(BaseMiddleware):
         super().__init__()
         self._texts = _load_json(texts_path)
 
-    async def on_process_message(self, message: types.Message, data: dict) -> None:
+    async def on_process_message(self, message: Message, data: dict):
         lang = message.from_user.language_code or 'en'
-        data['text'] = _build_get_text_func(self._texts, lang)
+        data['translate'] = _build_get_text_func(self._texts, lang)
