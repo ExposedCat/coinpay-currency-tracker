@@ -1,8 +1,14 @@
 {
     "en": {
-        "start": "Hello, {name}!"
+        "start": "Hello, {name}!",
+        "button_subscriptions": "Subscriptions",
+        "button_enable_notifications": "Enable notifications",
+        "button_disable_notifications": "Disable notifications"
     },
     "ru": {
-        "start": "Привет, {name}!"
+        "start": "Привет, {name}!",
+        "button_subscriptions": "Подписки",
+        "button_enable_notifications": "Включить уведомления",
+        "button_disable_notifications": "Выключить уведомления"
     }
 }
