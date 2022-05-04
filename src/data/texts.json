@@ -1,18 +1,32 @@
 {
     "en": {
+        "main_menu": "Main menu",
         "start": "Hello, {name}!",
         "component_subscription": "<b>{buy}</b> ⥄ <b>{sell}</b> @{interval} min.",
-        "subscriptions": "Your subscriptions:\n\n{list}",
+        "component_empty": "[empty]",
+        "subscriptions": "Your subscriptions: {is_empty}",
+        "notifications_enabled": "Notifications enabled",
+        "notifications_disabled": "Notifications disabled",
         "button_subscriptions": "Subscriptions",
         "button_enable_notifications": "Enable notifications",
-        "button_disable_notifications": "Disable notifications"
+        "button_disable_notifications": "Disable notifications",
+        "button_remove_notification": "Remove notification",
+        "button_add_notification": "Add notification",
+        "button_main_menu": "← Main menu",
     },
     "ru": {
+        "main_menu": "Главное меню",
         "start": "Привет, {name}!",
         "component_subscription": "<b>{buy}</b> ⥄ <b>{sell}</b> @{interval} мин.",
-        "subscriptions": "Ваши подписки:\n\n{list}",
+        "component_empty": "[пусто]",
+        "subscriptions": "Ваши подписки: {is_empty}",
+        "notifications_enabled": "Уведомления включены",
+        "notifications_disabled": "Уведомления выключены",
         "button_subscriptions": "Подписки",
         "button_enable_notifications": "Включить уведомления",
-        "button_disable_notifications": "Выключить уведомления"
+        "button_disable_notifications": "Выключить уведомления",
+        "button_remove_notification": "Удалить уведомление",
+        "button_add_notification": "Добавить уведомление",
+        "button_main_menu": "← Главное меню",
     }
 }
