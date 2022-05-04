@@ -9,7 +9,7 @@ async def handler(
     translate: TranslateFunc,
 ):
     name = message.from_user.full_name
-    await message.reply(
+    await message.answer(
         translate('start', {'name': name}),
         # TODO: Check whether user has notifications enabled or not
         reply_markup=build_main_menu(translate, False),
