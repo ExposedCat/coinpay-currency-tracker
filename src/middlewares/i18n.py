@@ -12,6 +12,6 @@ class I18nMiddleware(BaseMiddleware):
         super().__init__()
         self._texts = _load_json(texts_path)
 
-    async def on_process_message(self, message: Message, data: dict):
+    async def on_pre_process_message(self, message: Message, data: dict):
         lang = message.from_user.language_code or 'en'
         data['translate'] = _build_get_text_func(self._texts, lang)
