@@ -13,6 +13,7 @@ from handlers.toggle_notifications import (
     handler_on as _cmd_notify,
     handler_off as _cmd_not_notify,
 )
+from handlers.unkown import handler as _unknown_command
 
 
 def _setup_handlers(dispatcher: Dispatcher):
@@ -29,6 +30,7 @@ def _setup_handlers(dispatcher: Dispatcher):
     dispatcher.register_message_handler(
         _cmd_not_notify, ButtonClickFilter('button_disable_notifications')
     )
+    dispatcher.register_message_handler(_unknown_command)
 
 
 def init_bot() -> tuple[Bot, Dispatcher]:

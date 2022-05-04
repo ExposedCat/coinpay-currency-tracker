@@ -13,6 +13,7 @@
         "button_remove_notification": "Remove notification",
         "button_add_notification": "Add notification",
         "button_main_menu": "← Main menu",
+        "error_unknown_command": "Unknown command"
     },
     "ru": {
         "main_menu": "Главное меню",
@@ -28,5 +29,6 @@
         "button_remove_notification": "Удалить уведомление",
         "button_add_notification": "Добавить уведомление",
         "button_main_menu": "← Главное меню",
+        "error_unknown_command": "Неизвестная команда"
     }
 }
