@@ -22,14 +22,7 @@ async def get_pair(currency: str) -> list[str]:
     return currencies
 
 
-async def get_rate(sale_currency: str, buy_currency: str) -> float:
+async def fetch_rates() -> float:
     response = await send_request(api('exchange_rate'))
-    try:
-        rate = next(
-            pair['price']
-            for pair in response['rates']
-            if pair['pair'] == f'{sale_currency}_{buy_currency}'
-        )
-    except StopIteration:
-        raise PairNotFound
-    return rate
+    rates = dict((data['pair'], data['price']) for data in response['rates'])
+    return rates
