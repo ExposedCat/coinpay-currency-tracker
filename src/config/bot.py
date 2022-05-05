@@ -3,6 +3,7 @@ from os import getenv
 from aiogram import Bot, Dispatcher, executor, types
 
 from filters.button_click_filter import ButtonClickFilter
+from filters.inline_click_filter import InlineClickFilter
 
 from config.localization import setup_locale_engine
 
@@ -14,6 +15,9 @@ from handlers.toggle_notifications import (
     handler_off as _cmd_not_notify,
 )
 from handlers.unkown import handler as _unknown_command
+from handlers.add_notification import handler as _cmd_add_notification
+from handlers.choose_currency_buy import handler as _click_currency_buy
+from handlers.choose_pair import handler as _click_pair
 
 
 def _setup_handlers(dispatcher: Dispatcher):
@@ -29,6 +33,15 @@ def _setup_handlers(dispatcher: Dispatcher):
     )
     dispatcher.register_message_handler(
         _cmd_not_notify, ButtonClickFilter('button_disable_notifications')
+    )
+    dispatcher.register_message_handler(
+        _cmd_add_notification, ButtonClickFilter('button_add_notification')
+    )
+    dispatcher.register_callback_query_handler(
+        _click_currency_buy, InlineClickFilter('buy_')
+    )
+    dispatcher.register_callback_query_handler(
+        _click_pair, InlineClickFilter('pair_')
     )
     dispatcher.register_message_handler(_unknown_command)
 

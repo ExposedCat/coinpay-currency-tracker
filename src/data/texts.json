@@ -5,6 +5,7 @@
         "component_subscription": "<b>{buy}</b> ⥄ <b>{sell}</b> @{interval} min.",
         "component_empty": "[empty]",
         "subscriptions": "Your subscriptions: {is_empty}",
+        "notification": "Rate of <b>{buy}</b> : <b>{sell}</b> is {rate}",
         "notifications_enabled": "Notifications enabled",
         "notifications_disabled": "Notifications disabled",
         "button_subscriptions": "Subscriptions",
@@ -13,6 +14,9 @@
         "button_remove_notification": "Remove notification",
         "button_add_notification": "Add notification",
         "button_main_menu": "← Main menu",
+        "choose_to_buy": "Choose a currency to buy",
+        "choose_to_sell": "Choose a currency to sell",
+        "input_interval": "Input interval of refreshing in minutes",
         "error_unknown_command": "Unknown command"
     },
     "ru": {
@@ -21,6 +25,7 @@
         "component_subscription": "<b>{buy}</b> ⥄ <b>{sell}</b> @{interval} мин.",
         "component_empty": "[пусто]",
         "subscriptions": "Ваши подписки: {is_empty}",
+        "notification": "Курс <b>{buy}</b> : <b>{sell}</b> - {rate}",
         "notifications_enabled": "Уведомления включены",
         "notifications_disabled": "Уведомления выключены",
         "button_subscriptions": "Подписки",
@@ -29,6 +34,9 @@
         "button_remove_notification": "Удалить уведомление",
         "button_add_notification": "Добавить уведомление",
         "button_main_menu": "← Главное меню",
+        "choose_to_buy": "Выберите валюту для покупки",
+        "choose_to_sell": "Выберите валюту для продажи",
+        "input_interval": "Введите интервал обновления в минутах",
         "error_unknown_command": "Неизвестная команда"
     }
 }
