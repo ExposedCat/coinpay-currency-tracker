@@ -9,7 +9,6 @@ async def handler(call: CallbackQuery, translate: TranslateFunc):
     # TODO: Set user state to 'input_interval'
     # TODO: Set user pair in db
     pair = call.data.split('_', 1)[1]
-    print(pair)
     await call.message.edit_text(
         translate('input_interval'),
         reply_markup=ReplyKeyboardMarkup(),

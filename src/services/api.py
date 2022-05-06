@@ -2,8 +2,8 @@ import os
 from data.type_aliases import PairNotFound
 from services.send_request import send_request
 
-
-api = lambda path: f'{os.environ["API_ENDPOINT"]}/{path}'
+def api(path: str):
+    return f'{os.environ["API_ENDPOINT"]}/{path}'
 
 
 async def get_currencies() -> set[str]:

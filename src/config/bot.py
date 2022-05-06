@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from filters.button_click_filter import ButtonClickFilter
 from filters.inline_click_filter import InlineClickFilter
 
-from config.localization import setup_locale_engine
+from config.localization import connect_locale_engine
 
 from handlers.start import handler as _cmd_start
 from handlers.main_menu import handler as _cmd_main_menu
@@ -20,7 +20,7 @@ from handlers.choose_currency_buy import handler as _click_currency_buy
 from handlers.choose_pair import handler as _click_pair
 
 
-def _setup_handlers(dispatcher: Dispatcher):
+def setup_handlers(dispatcher: Dispatcher):
     dispatcher.register_message_handler(commands='start', callback=_cmd_start)
     dispatcher.register_message_handler(
         _cmd_subs_list, ButtonClickFilter('button_subscriptions')
@@ -53,8 +53,9 @@ def init_bot() -> tuple[Bot, Dispatcher]:
     )
     dispatcher = Dispatcher(bot)
     setup_locale_engine(dispatcher)
-    _setup_handlers(dispatcher)
-    return bot, dispatcher
+    connect_locale_engine(dispatcher)
+    setup_handlers(dispatcher)
+    return dispatcher
 
 
 def start_bot(dispatcher: Dispatcher):
