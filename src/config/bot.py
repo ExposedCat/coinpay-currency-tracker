@@ -2,10 +2,13 @@ from os import getenv
 
 from aiogram import Bot, Dispatcher, executor, types
 
+from motor.motor_asyncio import AsyncIOMotorDatabase
+
 from filters.button_click_filter import ButtonClickFilter
 from filters.inline_click_filter import InlineClickFilter
 
-from config.localization import connect_locale_engine
+from config.localization import inject_locale_engine
+from config.database import inject_database
 
 from handlers.start import handler as _cmd_start
 from handlers.main_menu import handler as _cmd_main_menu
@@ -46,14 +49,14 @@ def setup_handlers(dispatcher: Dispatcher):
     dispatcher.register_message_handler(_unknown_command)
 
 
-def init_bot() -> tuple[Bot, Dispatcher]:
+def init_bot(database: AsyncIOMotorDatabase) -> Dispatcher:
     bot = Bot(
         token=getenv('BOT_TOKEN'),
         parse_mode=types.ParseMode.HTML,
     )
     dispatcher = Dispatcher(bot)
-    setup_locale_engine(dispatcher)
-    connect_locale_engine(dispatcher)
+    inject_database(database, dispatcher)
+    inject_locale_engine(dispatcher)
     setup_handlers(dispatcher)
     return dispatcher
 
