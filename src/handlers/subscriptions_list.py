@@ -10,11 +10,6 @@ from entities.user import User
 
 
 async def handler(message: Message, translate: TranslateFunc, user: User):
-    subscriptions = (
-        {'buy': 'BTC', 'sell': 'USDT', 'interval': 5, 'id': '0'},
-        {'buy': 'ETH', 'sell': 'USDT', 'interval': 10, 'id': '1'},
-        {'buy': 'XRP', 'sell': 'UAH', 'interval': 5, 'id': '2'},
-    )
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     buttons = [
         translate('button_add_notification'),
@@ -22,20 +17,28 @@ async def handler(message: Message, translate: TranslateFunc, user: User):
     ]
     keyboard.add(*buttons)
     data = {
-        'is_empty': '' if len(subscriptions) else translate('component_empty')
+        'is_empty': ''
+        if len(user.get('subscriptions'))
+        else translate('component_empty')
     }
     await message.answer(
         translate('subscriptions', data),
         reply_markup=keyboard,
     )
-    for subscription in subscriptions:
+    for subscription in user.get('subscriptions'):
         keyboard = InlineKeyboardMarkup()
         button = Button(
             text=translate('button_remove_notification'),
             callback_data=f'remove_notification_{id}',
         )
         keyboard.add(button)
+        buy, sell = subscription['currencies'].split('_')
+        subscription_data = {
+            'buy': buy,
+            'sell': sell,
+            'interval': subscription['interval'],
+        }
         await message.answer(
-            translate('component_subscription', subscription),
+            translate('component_subscription', subscription_data),
             reply_markup=keyboard,
         )

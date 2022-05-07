@@ -8,7 +8,7 @@ from services.keyboards import build_currencies_keyboard
 
 
 async def handler(message: Message, translate: TranslateFunc, user: User):
-    # TODO: Set user state to 'free'
+    await user.update({'state': 'free'})
     currencies = await get_currencies()
     await message.answer(
         translate('choose_to_buy'),
