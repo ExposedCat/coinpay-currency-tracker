@@ -1,5 +1,6 @@
 from os import getenv
 
+from typing import Callable
 from aiogram import Bot, Dispatcher, executor, types
 from services.db_users import UsersMgr
 
@@ -61,5 +62,9 @@ def init_bot(users_mgr: UsersMgr) -> Dispatcher:
     return dispatcher
 
 
-def start_bot(dispatcher: Dispatcher):
-    executor.start_polling(dispatcher)
+def start_bot(dispatcher: Dispatcher, on_start: Callable, on_end: Callable):
+    executor.start_polling(
+        dispatcher,
+        on_startup=on_start,
+        on_shutdown=on_end,
+    )
