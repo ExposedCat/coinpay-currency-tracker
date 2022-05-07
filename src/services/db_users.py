@@ -33,7 +33,7 @@ class UsersMgr:
 
     async def update_user(self, user_id: int, updates: dict):
         if updates is None:
-            updates = {}
+            return
         await self._db.update_one(
             {'id': user_id},
             {'$set': updates},
