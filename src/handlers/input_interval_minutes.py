@@ -18,13 +18,15 @@ async def handler(
             user.get('interval') + int(message.text),
             user.get('id'),
         )
-    await user.update(
-        {
-            'state': 'free',
-            'interval': 0,
-        }
-    )
-    await message.answer(
-        translate('notification_added'),
-        reply_markup=build_main_menu(translate, user.get('notifications_enabled')),
-    )
+        await user.update(
+            {
+                'state': 'free',
+                'interval': 0,
+            }
+        )
+        await message.answer(
+            translate('notification_added'),
+            reply_markup=build_main_menu(translate, user.get('notifications_enabled')),
+        )
+    else:
+        await message.answer(translate('error_not_a_number'))

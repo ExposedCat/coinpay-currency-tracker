@@ -20,6 +20,7 @@
         "input_interval_hours": "Input hours of interval of refreshing",
         "input_interval_minutes": "Input minutes of interval of refreshing",
         "error_unknown_command": "Unknown command"
+        "error_not_a_number": "Input <b>number</b>",
     },
     "ru": {
         "main_menu": "Главное меню",
@@ -42,5 +43,6 @@
         "input_interval_hours": "Введите часы интервала обновления курса",
         "input_interval_minutes": "Введите минуты интервала обновления курса",
         "error_unknown_command": "Неизвестная команда"
+        "error_not_a_number": "Введите <u>число</u>",
     }
 }

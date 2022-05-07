@@ -32,7 +32,6 @@ def time_passed(date: datetime, seconds: int) -> bool:
         return True
     now = datetime.now()
     delta = now - date
-    print(f'seconds left {delta.seconds}')
     return delta.total_seconds() >= seconds
 
 
