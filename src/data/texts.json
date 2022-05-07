@@ -15,12 +15,13 @@
         "button_remove_notification": "Remove notification",
         "button_add_notification": "Add notification",
         "button_main_menu": "← Main menu",
-        "choose_to_buy": "Choose a currency to buy",
-        "choose_to_sell": "Choose a currency to sell",
+        "choose_to_buy": "Choose a currency to <b>buy</b>",
+        "choose_to_sell": "Choose a currency to <b>sell</b>",
         "input_interval_hours": "Input hours of interval of refreshing",
         "input_interval_minutes": "Input minutes of interval of refreshing",
-        "error_unknown_command": "Unknown command"
+        "error_unknown_command": "Unknown command",
         "error_not_a_number": "Input <b>number</b>",
+        "notification_deleted": "<i>Notification setting deleted</i>"
     },
     "ru": {
         "main_menu": "Главное меню",
@@ -38,11 +39,12 @@
         "button_remove_notification": "Удалить уведомление",
         "button_add_notification": "Добавить уведомление",
         "button_main_menu": "← Главное меню",
-        "choose_to_buy": "Выберите валюту для покупки",
-        "choose_to_sell": "Выберите валюту для продажи",
+        "choose_to_buy": "Выберите валюту для <b>покупки</b>",
+        "choose_to_sell": "Выберите валюту для <b>продажи</b>",
         "input_interval_hours": "Введите часы интервала обновления курса",
         "input_interval_minutes": "Введите минуты интервала обновления курса",
-        "error_unknown_command": "Неизвестная команда"
+        "error_unknown_command": "Неизвестная команда",
         "error_not_a_number": "Введите <u>число</u>",
+        "notification_deleted": "<i>Настройка уведомлений удалена</i>"
     }
 }

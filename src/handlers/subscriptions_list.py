@@ -25,7 +25,7 @@ async def handler(
         keyboard = InlineKeyboardMarkup()
         button = Button(
             text=translate('button_remove_notification'),
-            callback_data=f'remove_notification_{id}',
+            callback_data=f'remove_notification_{subscription["_id"]}',
         )
         keyboard.add(button)
         buy, sell = subscription['currencies'].split('_')

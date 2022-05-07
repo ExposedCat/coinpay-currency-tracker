@@ -1,5 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorDatabase, AsyncIOMotorCollection
 from pymongo import ReturnDocument
+from bson.objectid import ObjectId
 
 from datetime import datetime as date
 
@@ -40,5 +41,5 @@ class SubscriptionsMgr:
             {'$set': {'last_sent': now}},
         )
 
-    async def delete(self, subscription_id: int):
-        await self._db.delete_one({'_id': subscription_id})
+    async def delete(self, subscription_id: str):
+        await self._db.delete_one({'_id': ObjectId(subscription_id)})

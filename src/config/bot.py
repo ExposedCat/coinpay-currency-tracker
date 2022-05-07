@@ -26,6 +26,7 @@ from handlers.unkown import handler as _unknown_command
 from handlers.add_notification import handler as _cmd_add_notification
 from handlers.choose_currency_buy import handler as _click_currency_buy
 from handlers.choose_pair import handler as _click_pair
+from handlers.delete_notification import handler as _delete_notification
 
 
 def setup_handlers(dispatcher: Dispatcher):
@@ -50,6 +51,9 @@ def setup_handlers(dispatcher: Dispatcher):
     )
     dispatcher.register_callback_query_handler(
         _click_pair, InlineClickFilter('pair_')
+    )
+    dispatcher.register_callback_query_handler(
+        _delete_notification, InlineClickFilter('remove_notification_')
     )
     dispatcher.register_message_handler(
         _input_interval_hours, StateFilter('input_interval_hours')
