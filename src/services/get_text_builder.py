@@ -13,9 +13,10 @@ def build_get_text_func(texts: dict, lang: str) -> TranslateFunc:
     return get_text
 
 
-def get_texts(texts_path: str) -> dict:
+def get_texts(texts_path: str = None) -> dict:
     if not texts_path:
         texts_path = 'src/data/texts.json'
     with open(texts_path) as file:
         data = json.load(file)
+    file.close()
     return data
