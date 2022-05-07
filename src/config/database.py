@@ -1,13 +1,14 @@
 from os import getenv
 
 from aiogram import Dispatcher
-
-from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
+from motor.motor_asyncio import AsyncIOMotorClient
 
 from middlewares.database import DatabaseMiddleware
 
+from services.db_users import UsersMgr
 
-def init_db() -> AsyncIOMotorDatabase:
+
+def init_db() -> UsersMgr:
     db_name = getenv('DB_NAME')
 
     db = AsyncIOMotorClient(
@@ -20,8 +21,10 @@ def init_db() -> AsyncIOMotorDatabase:
         )
     )
 
-    return db[db_name]
+    users_mgr = UsersMgr(db[db_name])
+
+    return users_mgr
 
 
-def inject_database(database: AsyncIOMotorDatabase, dispatcher: Dispatcher):
-    dispatcher.setup_middleware(DatabaseMiddleware(database))
+def inject_database(users_mgr: UsersMgr, dispatcher: Dispatcher):
+    dispatcher.setup_middleware(DatabaseMiddleware(users_mgr))

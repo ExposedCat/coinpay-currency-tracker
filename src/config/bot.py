@@ -1,8 +1,8 @@
 from os import getenv
 
 from aiogram import Bot, Dispatcher, executor, types
+from services.db_users import UsersMgr
 
-from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from filters.button_click_filter import ButtonClickFilter
 from filters.inline_click_filter import InlineClickFilter
@@ -49,13 +49,13 @@ def setup_handlers(dispatcher: Dispatcher):
     dispatcher.register_message_handler(_unknown_command)
 
 
-def init_bot(database: AsyncIOMotorDatabase) -> Dispatcher:
+def init_bot(users_mgr: UsersMgr) -> Dispatcher:
     bot = Bot(
         token=getenv('BOT_TOKEN'),
         parse_mode=types.ParseMode.HTML,
     )
     dispatcher = Dispatcher(bot)
-    inject_database(database, dispatcher)
+    inject_database(users_mgr, dispatcher)
     inject_locale_engine(dispatcher)
     setup_handlers(dispatcher)
     return dispatcher

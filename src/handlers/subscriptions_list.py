@@ -6,9 +6,10 @@ from aiogram.types import (
     InlineKeyboardButton as Button,
 )
 
+from entities.user import User
 
-async def handler(message: Message, translate: TranslateFunc):
-    # TODO: Get real user subsriptions
+
+async def handler(message: Message, translate: TranslateFunc, user: User):
     subscriptions = (
         {'buy': 'BTC', 'sell': 'USDT', 'interval': 5, 'id': '0'},
         {'buy': 'ETH', 'sell': 'USDT', 'interval': 10, 'id': '1'},

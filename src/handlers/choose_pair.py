@@ -1,10 +1,9 @@
 from data.type_aliases import TranslateFunc
 from aiogram.types import CallbackQuery, ReplyKeyboardMarkup
-
-from services.api import get_pair
-from services.keyboards import build_pairs_keyboard
+from entities.user import User
 
 
+async def handler(call: CallbackQuery, translate: TranslateFunc, user: User):
 async def handler(call: CallbackQuery, translate: TranslateFunc):
     # TODO: Set user state to 'input_interval'
     # TODO: Set user pair in db
