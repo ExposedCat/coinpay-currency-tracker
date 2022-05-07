@@ -13,13 +13,13 @@ log = logging.getLogger(__name__)
 
 async def on_start(_):
     log.info('Running notification sender')
-    run_notification_sender(users_mgr)
+    run_notification_sender(users_mgr, subscriptions_mgr)
 
 
 async def on_end(_):
     pass
 
 
-users_mgr = init_db()
-dispatcher = init_bot(users_mgr)
+users_mgr, subscriptions_mgr = init_db()
+dispatcher = init_bot(users_mgr, subscriptions_mgr)
 start_bot(dispatcher, on_start, on_end)

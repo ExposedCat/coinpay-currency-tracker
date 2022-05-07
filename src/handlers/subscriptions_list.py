@@ -6,26 +6,22 @@ from aiogram.types import (
     InlineKeyboardButton as Button,
 )
 
-from entities.user import User
 
-
-async def handler(message: Message, translate: TranslateFunc, user: User):
+async def handler(
+    message: Message, translate: TranslateFunc, subscriptions: list[dict]
+):
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     buttons = [
         translate('button_add_notification'),
         translate('button_main_menu'),
     ]
     keyboard.add(*buttons)
-    data = {
-        'is_empty': ''
-        if len(user.get('subscriptions'))
-        else translate('component_empty')
-    }
     await message.answer(
-        translate('subscriptions', data),
+        translate('subscriptions'),
         reply_markup=keyboard,
     )
-    for subscription in user.get('subscriptions'):
+    sent = False
+    async for subscription in subscriptions:
         keyboard = InlineKeyboardMarkup()
         button = Button(
             text=translate('button_remove_notification'),
@@ -42,3 +38,6 @@ async def handler(message: Message, translate: TranslateFunc, user: User):
             translate('component_subscription', subscription_data),
             reply_markup=keyboard,
         )
+        sent = True
+    if not sent:
+        await message.answer(translate('component_empty'))

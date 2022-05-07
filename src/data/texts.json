@@ -4,8 +4,9 @@
         "start": "Hello, {name}!",
         "component_subscription": "<b>{buy}</b> ⥄ <b>{sell}</b> @{interval} min.",
         "component_empty": "[empty]",
-        "subscriptions": "Your subscriptions: {is_empty}",
+        "subscriptions": "Your subscriptions:",
         "notification": "Rate of <b>{buy}</b> : <b>{sell}</b> is {rate}",
+        "notification_added": "Notification setting saved",
         "notifications_enabled": "Notifications enabled",
         "notifications_disabled": "Notifications disabled",
         "button_subscriptions": "Subscriptions",
@@ -16,7 +17,8 @@
         "button_main_menu": "← Main menu",
         "choose_to_buy": "Choose a currency to buy",
         "choose_to_sell": "Choose a currency to sell",
-        "input_interval": "Input interval of refreshing in minutes",
+        "input_interval_hours": "Input hours of interval of refreshing",
+        "input_interval_minutes": "Input minutes of interval of refreshing",
         "error_unknown_command": "Unknown command"
     },
     "ru": {
@@ -24,8 +26,9 @@
         "start": "Привет, {name}!",
         "component_subscription": "<b>{buy}</b> ⥄ <b>{sell}</b> @{interval} мин.",
         "component_empty": "[пусто]",
-        "subscriptions": "Ваши подписки: {is_empty}",
+        "subscriptions": "Ваши подписки:",
         "notification": "Курс <b>{buy}</b> : <b>{sell}</b> - {rate}",
+        "notification_added": "Настройка уведомления сохранена",
         "notifications_enabled": "Уведомления включены",
         "notifications_disabled": "Уведомления выключены",
         "button_subscriptions": "Подписки",
@@ -36,7 +39,8 @@
         "button_main_menu": "← Главное меню",
         "choose_to_buy": "Выберите валюту для покупки",
         "choose_to_sell": "Выберите валюту для продажи",
-        "input_interval": "Введите интервал обновления в минутах",
+        "input_interval_hours": "Введите часы интервала обновления курса",
+        "input_interval_minutes": "Введите минуты интервала обновления курса",
         "error_unknown_command": "Неизвестная команда"
     }
 }

@@ -1,4 +1,3 @@
-from locale import currency
 from data.type_aliases import TranslateFunc
 from aiogram.types import Message
 from entities.user import User

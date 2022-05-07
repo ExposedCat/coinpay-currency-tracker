@@ -2,17 +2,21 @@ from os import getenv
 
 from typing import Callable
 from aiogram import Bot, Dispatcher, executor, types
+from services.db_subscriptions import SubscriptionsMgr
 from services.db_users import UsersMgr
 
 
 from filters.button_click_filter import ButtonClickFilter
 from filters.inline_click_filter import InlineClickFilter
+from filters.state_filter import StateFilter
 
 from config.localization import inject_locale_engine
 from config.database import inject_database
 
 from handlers.start import handler as _cmd_start
 from handlers.main_menu import handler as _cmd_main_menu
+from handlers.input_interval_hours import handler as _input_interval_hours
+from handlers.input_interval_minutes import handler as _input_interval_minutes
 from handlers.subscriptions_list import handler as _cmd_subs_list
 from handlers.toggle_notifications import (
     handler_on as _cmd_notify,
@@ -47,16 +51,22 @@ def setup_handlers(dispatcher: Dispatcher):
     dispatcher.register_callback_query_handler(
         _click_pair, InlineClickFilter('pair_')
     )
+    dispatcher.register_message_handler(
+        _input_interval_hours, StateFilter('input_interval_hours')
+    )
+    dispatcher.register_message_handler(
+        _input_interval_minutes, StateFilter('input_interval_minutes')
+    )
     dispatcher.register_message_handler(_unknown_command)
 
 
-def init_bot(users_mgr: UsersMgr) -> Dispatcher:
+def init_bot(users_mgr: UsersMgr, subscriptions_mgr: SubscriptionsMgr) -> Dispatcher:
     bot = Bot(
         token=getenv('BOT_TOKEN'),
         parse_mode=types.ParseMode.HTML,
     )
     dispatcher = Dispatcher(bot)
-    inject_database(users_mgr, dispatcher)
+    inject_database(users_mgr, subscriptions_mgr, dispatcher)
     inject_locale_engine(dispatcher)
     setup_handlers(dispatcher)
     return dispatcher
