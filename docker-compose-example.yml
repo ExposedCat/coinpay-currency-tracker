@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  db:
+    image: mongo:latest
+    container_name: bot-db
+    restart: unless-stopped
+    command: mongod
+    environment:
+      MONGO_INITDB_DATABASE: coinpay-bot-db
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+    volumes:
+      - mongodbdata:/data/db
+    ports:
+      - 27017:27017
+  bot:
+    image: coinpay-tracker
+    container_name: bot
+    environment:
+      API_ENDPOINT: https://coinpay.org.ua/api/v1
+      BOT_TOKEN: 5193124008:AAFiU1lAji-dySq1SHOhB139uaqkSSA-DhA
+      DB_NAME: coinpay-bot-db
+      DB_HOST: db
+    depends_on:
+      - bot-db
