@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  db:
+  bot-db:
     image: mongo:latest
     container_name: bot-db
     restart: unless-stopped
@@ -18,8 +18,10 @@ services:
     container_name: bot
     environment:
       API_ENDPOINT: https://coinpay.org.ua/api/v1
-      BOT_TOKEN: 5193124008:AAFiU1lAji-dySq1SHOhB139uaqkSSA-DhA
+      BOT_TOKEN: "${BOT_API_TOKEN}"
       DB_NAME: coinpay-bot-db
-      DB_HOST: db
+      DB_HOST: bot-db
     depends_on:
       - bot-db
+volumes:
+  mongodbdata:

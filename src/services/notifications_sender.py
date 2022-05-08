@@ -60,6 +60,7 @@ async def send_notifications(
         users[user['id']] = {
             'lang': user['lang'],
             'state': user['state'],
+            'notifications_enabled': user['notifications_enabled'],
         }
     subscriptions = subscriptions_mgr.get_all()
     rates = await fetch_rates()
@@ -69,7 +70,9 @@ async def send_notifications(
             subscription['last_sent'], subscription['interval'] * 60
         )
         user_data = users[subscription['user_id']]
-        if is_time_passed and user_data['state'] == 'free':
+        not_busy = user_data['state'] == 'free'
+        enabled = user_data['notifications_enabled']
+        if enabled and is_time_passed and not_busy:
             await process_subscription(subscription, user_data, rates, texts, bot)
             subscription_ids.append(subscription['_id'])
     await subscriptions_mgr.update_date_many(subscription_ids)
