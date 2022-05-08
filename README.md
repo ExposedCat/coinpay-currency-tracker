@@ -18,6 +18,7 @@
     <li>Scalable file architecture</li>
     <li>Strict code formatting rules following PEP8 standard</li>
     <li>As async, as possible</li>
+    <li>Docker support</li>
     <li>Well-readable git repository with beautiful README</li>
 </ul>
 
@@ -36,20 +37,20 @@
 </div>
 
 0. Install [Docker](https://docs.docker.com/get-docker/)  
-1. Clone repo:  
+1. Clone this repo:  
 ```bash
 git clone https://github.com/ExposedCat/coinpay-currency-tracker.git
 ```
 2. Go to project root:
 ```bash
-cd coinpay-tracker
+cd coinpay-currency-tracker
 ```
-3. Replace `docker-compose-example.yml` with `docker-compose.yml` and fill your Telegram bot http API token
+3. Rename `.env-example` to `.env` and replace example Telegram Bot API token with yours from [@BotFather](https://t.me/BotFather)
 4. Build app image:
 ```bash
-sudo docker build -t coinpay-tracker
+sudo docker build -t coinpay-tracker .
 ```
-5. Run image:
+5. Start app and database images:
 ```bash
 sudo docker-compose up -d --build
 ```
